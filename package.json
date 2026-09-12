@@ -2,7 +2,7 @@
   "name": "projeto-ecommerce-backend",
   "version": "1.0.0",
   "description": "Backend do meu projeto de ecommerce, nele irei consolidar conhecimentos de Node e irei me familiarizar sobre transacoes bancárias.",
-  "main": "index.js",
+  "main": "src/server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
