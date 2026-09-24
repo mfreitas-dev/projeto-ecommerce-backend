@@ -1,5 +1,7 @@
 import Order from "../models/Order.js";
 import Product from "../models/Product.js";
+import { Preference } from 'mercadopago';
+import client from '../config/mercadoPago.js';
 
 export async function createOrder(req,res) {
     try {
@@ -35,7 +37,33 @@ export async function createOrder(req,res) {
             status: 'pending',
         });
 
-        return res.status(201).json(order)        
+        const preference = new Preference(client);
+        const result = await preference.create({
+            body: {
+                items: order.items.map(item => ({
+                id: item.productId.toString(),
+                title: item.name,
+                unit_price: item.price,
+                quantity: item.quantity,
+                currency_id: 'BRL',
+            })),
+            external_reference: order._id.toString(),
+            back_urls: {
+                success: 'http://localhost:3000/checkout/sucesso',
+                failure: 'http://localhost:3000/checkout/falha',
+                pending: 'http://localhost:3000/checkout/pendente',
+            },
+            auto_return: 'approved',
+            },
+        });
+
+        order.mpPreferenceId = result.id;
+        await order.save();
+
+        return res.status(201).json({
+            order,
+            init_point: result.init_point,
+        })      
     } catch (error) {
         console.error(error);
         return res.status(500).json({ erro: error.message });
