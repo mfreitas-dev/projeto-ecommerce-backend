@@ -53,7 +53,6 @@ export async function createOrder(req,res) {
                 failure: 'http://localhost:3000/checkout/falha',
                 pending: 'http://localhost:3000/checkout/pendente',
             },
-            auto_return: 'approved',
             },
         });
 
