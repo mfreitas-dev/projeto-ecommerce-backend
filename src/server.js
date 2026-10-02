@@ -5,6 +5,7 @@ import connectDB from '../config/db.js';
 import productRouter from '../routes/product.routes.js';
 import authRouter from '../routes/auth.routes.js';
 import orderRouter from '../routes/order.routes.js';
+import webhookRouter from '../routes/webhook.routes.js';
 connectDB();
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use("/products", productRouter);
 app.use('/auth', authRouter);
 app.use('/orders', orderRouter);
+app.use('/webhook', webhookRouter);
 
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'OK! API funcionando!' });
