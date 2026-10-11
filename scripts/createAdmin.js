@@ -6,18 +6,24 @@ dotenv.config();
 
 const createAdmin = async () => {
     try {
-    await connectDB();
+        await connectDB();
 
-    const username = 'AdminMatheus';
-    const senhaCrua = 'admsenha123?';
-    const saltRounds = 10;
-    const hash = await bcrypt.hash(senhaCrua, saltRounds);
-    const loginAdmin = await Admin.create({
-        username: username,
-        password: hash,
-    });
+        const username = process.env.ADMIN_SEED_USERNAME;
+        const senhaCrua = process.env.ADMIN_SEED_PASSWORD;
 
-    console.log("Sucesso, login criado:", loginAdmin);
+        if (!username || !senhaCrua) {
+            console.error('Defina ADMIN_SEED_USERNAME e ADMIN_SEED_PASSWORD no .env antes de rodar este script.');
+            process.exit(1);
+        }
+
+        const saltRounds = 10;
+        const hash = await bcrypt.hash(senhaCrua, saltRounds);
+        const loginAdmin = await Admin.create({
+            username: username,
+            password: hash,
+        });
+
+        console.log("Sucesso, login criado:", loginAdmin.username);
     } catch(error) {
         console.error(error);
         process.exit(1);
