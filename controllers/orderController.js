@@ -49,9 +49,9 @@ export async function createOrder(req,res) {
             })),
             external_reference: order._id.toString(),
             back_urls: {
-                success: 'http://localhost:3000/checkout/sucesso',
-                failure: 'http://localhost:3000/checkout/falha',
-                pending: 'http://localhost:3000/checkout/pendente',
+                success: `${process.env.FRONTEND_URL}/checkout/sucesso`,
+                failure: `${process.env.FRONTEND_URL}/checkout/falha`,
+                pending: `${process.env.FRONTEND_URL}/checkout/pendente`,
             },
             },
         });
