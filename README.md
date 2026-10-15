@@ -4,6 +4,15 @@ API REST para um projeto de e-commerce, desenvolvida com **Node.js e Express**. 
 
 > Projeto de estudo e portfólio, com foco no desenvolvimento backend, organização de rotas e controllers, autenticação e integração com serviços de pagamento.
 
+## 🔗 Projeto Full Stack
+
+Este backend faz parte de um projeto de e-commerce dividido em duas aplicações:
+
+- **Frontend:** [projeto-ecommerce-frontend](https://github.com/mfreitas-dev/projeto-ecommerce-frontend) — interface React para navegar pelos produtos, consultar detalhes e gerenciar o carrinho.
+- **Backend (este repositório):** API REST responsável pelos dados e pelas operações do lado do servidor.
+
+A integração entre as aplicações é configurada no frontend pela variável de ambiente `VITE_API_URL`, que deve apontar para a URL da API. Consulte também o README do frontend para as instruções específicas de execução.
+
 ## ✨ Funcionalidades
 
 - **Produtos:** listar produtos, consultar um produto por ID, cadastrar, atualizar e excluir produtos.
@@ -135,3 +144,4 @@ Este projeto faz parte da minha prática de desenvolvimento **backend com JavaSc
 **Matheus Freitas**
 
 - GitHub: [@mfreitas-dev](https://github.com/mfreitas-dev)
+- [Frontend do e-commerce](https://github.com/mfreitas-dev/projeto-ecommerce-frontend)
