@@ -6,7 +6,7 @@ export async function getAllProducts(req,res){
         return res.status(200).json(produtos)
     } catch(error) {
         console.error(error);
-        return res.status(500).json({erro: error})
+        return res.status(500).json({erro: error.message})
     };
 };
 
@@ -20,7 +20,7 @@ export async function getProductsByID(req,res){
         return res.status(200).json(produto)
     } catch(error) {
         console.error(error);
-        return res.status(500).json({erro: error})
+        return res.status(500).json({erro: error.message})
     };
 };
 
@@ -35,7 +35,7 @@ export async function CreateProduct(req,res) {
         return res.status(201).json(novoProduto);
     } catch (error) {
         console.error(error);
-        return res.status(500).json({erro: error})        
+        return res.status(500).json({erro: error.message})        
     }
 };
 
@@ -50,7 +50,7 @@ export async function updateProduct(req,res){
         return res.status(200).json(produtoAtualizado)
     } catch(error) {
         console.error(error);
-        return res.status(500).json({erro: error})
+        return res.status(500).json({erro: error.message})
     };
 };
 
@@ -68,6 +68,6 @@ export async function deleteProduct(req,res){
         });
     } catch(error) {
         console.error(error);
-        return res.status(500).json({erro: error})
+        return res.status(500).json({erro: error.message})
     };
 };
